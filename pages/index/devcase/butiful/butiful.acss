@@ -6,22 +6,129 @@ header{
  
   display: block;
   margin: auto;
-  width: 400rpx;
-  height: 600rpx;
+  width: 375rpx;
+  height:667.5rpx;
    margin: 20rpx auto;
 }
-//模板
+/* 模板 */
 .con_a{
+height: 120rpx;
+width: 92%;
+margin: auto;
 display: flex;
+justify-content: space-between;
+padding-bottom: 20rpx;
+border-bottom:  2rpx solid #ccc;
 }
 .con_a .con_left{
+ 
 display: flex;
+flex-direction: column;
+justify-content: space-between;
 }
 .con_a .con_right{
+  margin-right: 50rpx;
+padding-left: 50rpx;
+border-left: 2rpx solid #ccc;
 display: flex;
-flex: 2
+flex-direction: column;
+align-items: center;
+}
+.con_a .con_right image{
+width: 55rpx;
+height: 55rpx;
+margin-bottom: 10rpx;
+}
+.text11{
+ color: #6a6a6a;
+  font-size: 11pt;
 }
 .text_15pt{
   font-size: 15pt;
-  color: #47715d;
+ margin-bottom: 20rpx;
+}
+.text36{
+  color: #f57607;
+  font-weight: bold;
+  font-size:17pt;
+  margin-left: 10rpx;
+}
+
+/* 套餐 */
+.con_b{
+  width: 92%;
+  margin: auto;
+  display: flex;
+  height: 87rpx;
+  align-items: center;
+  border-bottom:  2rpx solid #ccc;
+}
+.text_right{
+  margin-left:20rpx;
+}
+.text30{
+  font-size: 36rpx;
+    color: #bababa;
+}
+.con_c{
+   width: 92%;
+  margin: auto;
+  display: flex;
+  border-bottom:0px;
+  flex-direction: column;
+  align-items: left;
+  line-height: 40rpx;
+}
+.con_n{
+  border-bottom:0px;
+}
+.con_d image{
+  width: 100%;
+  height: 1335rpx;
+  margin-bottom: 50rpx;
+}
+
+
+/* 客服 订单 ...... */
+.fixbox{
+  z-index: 999999;
+ background-color:#f9fbfa;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  height: 96rpx;
+  display: flex;
+ justify-content: space-between;
+ font-size: 18px;
+}
+.sever{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+ .sever_a{
+  width: 16%;
+ color:#6a6a6a;
+border-right:2rpx solid #cbcbcb;
+
+}
+.sever_b{
+  width: 16%;
+  color:#6a6a6a;
+}
+.sever_c{
+  width: 34%;
+ background-color: #f6a522;
+ color:#fafafa;
+}
+ .sever_d{
+  width: 34%;
+  background-color: #ff7000;
+color:#fafafa;
+
+}
+.sever image{
+  width: 50rpx;
+  height:50rpx;
 }

@@ -11,8 +11,38 @@ Page({
   ]
   },
   onLoad(query) {
-    // 页面加载
-    console.info(`Page onLoad with query: ${JSON.stringify(query)}`);
+    
+//     dd.getAuthCode({
+//     success:(res)=>{
+//         dd.alert({content: res.authCode})
+      
+//     },
+//     fail: (err)=>{
+//         dd.alert({content: JSON.stringify(err)})
+//     }
+// })
+// cc((res)=>{
+//   console.log(res)
+// })
+// function cc(callback){
+//   dd.httpRequest({
+// url: 'https://oapi.dingtalk.com/gettoken?appkey=dingb80rghbxckkpbeox&appsecret=aQwdZNk9fRe5AeL9_0vBe3rx452GhHkF83D1VCabABChBgJq7OWkZquQr9PZocV-',
+//     method: 'GET',
+//     data: {
+     
+//     },
+//     dataType: 'json',
+//     success: callback
+  
+//   });
+//  console.log(callback)
+// }
+
+
+
+  },
+  payfor(){
+    console.log(111)
   },
   onReady() {
     // 页面加载完成
