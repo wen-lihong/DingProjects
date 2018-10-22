@@ -1,0 +1,33 @@
+.box_item{
+ 
+  display: flex;
+  align-items: center;
+  height: 200rpx;
+  width: 100%;
+ 
+ border-bottom: 10rpx solid #ccc;
+}
+.box_item .box_left{
+  margin: 0 20rpx;
+} 
+.box_item .box_right{
+ display: flex;
+
+ flex-direction: column;
+ 
+justify-content:space-around;
+ 
+  height: 150rpx;
+  
+} 
+.box_item image{
+ width: 200rpx;
+ height: 200rpx;
+}
+.box_item text{
+
+font-size: 28rpx;
+
+/* font-weight:bold; */
+
+}

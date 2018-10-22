@@ -1,0 +1,20 @@
+<view class="box">
+  <navigator url=""class="box_item">
+    <text>美丽热购物网</text>
+  </navigator>
+  <navigator url=""class="box_item">
+    <text>一阳生生物科技</text>
+  </navigator>
+  <navigator url=""class="box_item">
+    <text>广州维诺科技</text>
+  </navigator>
+  <navigator url=""class="box_item">
+    <text>卓雅时代家具</text>
+  </navigator>
+  <navigator url=""class="box_item">
+    <text>广州土王酒业</text>
+  </navigator>
+  <navigator url=""class="box_item">
+    <text>TGVISION双晖传媒</text>
+  </navigator>
+</view>

@@ -1,0 +1,69 @@
+{
+  "pages": [
+     
+      "pages/index/devcase/butiful/butiful",
+    "pages/index/index",
+    "pages/index/devcase/devcase",
+ 
+
+    "pages/index/wxsale/wxsale",
+    "pages/index/wxsale/content/content",
+
+    "pages/index/xinerkeji/xinerkeji",
+    "pages/index/xinerkeji/content/content",
+
+    "pages/index/hository/hository",
+    "pages/index/hository/content/content",
+
+    "pages/index/cooperation/cooperation",
+     "pages/index/cooperation/content/content",
+
+    "pages/index/hope/hope",
+    "pages/index/hope/content/content",
+  
+    "pages/dynamic/dynamic",
+    "pages/dynamic/details/details",
+    
+    "pages/case/case",
+    "pages/about/about"
+   
+  ],
+  "window": {
+    "defaultTitle": "信儿众创科技",
+     "titleBarColor":"37016"
+  },
+
+
+   "tabBar": {
+    "textColor": "#7F8389",
+    "selectedColor": "#333740",
+  
+    "backgroundColor": "#F7F7FA",
+    "items": [
+      {
+        "pagePath": "pages/index/index",
+        "icon": "./../../imagess/swiper/home.png",
+        "activeIcon": "./../../imagess/swiper/home-sel.png",
+        "name": "首页"
+      },
+      {
+        "pagePath": "pages/dynamic/dynamic",
+        "icon": "./../../imagess/swiper/news.png",
+        "activeIcon":"./../../imagess/swiper/news-sel.png",
+        "name": "动态"
+      },
+      {
+        "pagePath": "pages/case/case",
+        "icon": "./../../imagess/swiper/demo.png",
+        "activeIcon": "./../../imagess/swiper/demo-sel.png",
+        "name": "案例"
+      },
+       {
+        "pagePath": "pages/about/about",
+        "icon": "./../../imagess/swiper/about.png",
+        "activeIcon":"./../../imagess/swiper/about-sel.png",
+        "name": "关于"
+      }
+    ]
+  }
+}

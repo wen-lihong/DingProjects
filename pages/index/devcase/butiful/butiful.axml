@@ -1,0 +1,32 @@
+<view class="header">
+  <image src="./../../../../images/t03.jpg" mode="scaleToFill" />
+</view>
+<view class="con_a">
+  <view class="con_left">
+    <text class="text_15pt">天天洗车模板</text>
+    <view class="con_price">
+    <image src=""mode="scaleToFill" />
+    <text>999</text>
+    </view>
+  </view>
+  <view class="con_right">
+    <image src=""  mode="scaleToFill"/>
+    <text>分享</text>
+  </view>
+</view>
+<view class="con_b">
+ <text>套餐</text>
+ <text>买模板、模板加制作+申请</text>
+</view>
+<view class="con_b">
+  <view>运费</text>
+  <text>买模板、模板加制作+申请</text>
+</view>
+<view class="con_b">
+  <text>宝贝评价</text>
+  <text>买模板、模板加制作+申请</text>
+</view>
+<view class="con_b">
+  <text>产品参数</text>
+  <text>买模板、模板加制作+申请</text>
+</view>

@@ -1,0 +1,11 @@
+<view class="item">
+  <view class="header hedaer_mic">
+    <image src="./../../../images/icons/menuicon21.png" mode="scaleToFill" />
+    <text>信儿工作室</text>
+  </view>
+  <view class="content">
+    <text class="text_head">中小企业信用管理体系探索</text>
+    <text class="text_cont"> &nbsp;&nbsp;由于 node_modules 里第三方模块代码不会经过转换器，为了确保各个终端兼容，node_modules 下的代码需要转成 es5 格式再引用，模块格式推荐使用 es2015 的 import/export。同时，浏览器相关web能力同样无法使用。</text>
+    <text class="text_end">2018-10-18</text>
+  </view>
+</view>

@@ -1,0 +1,27 @@
+header{
+    background-color: #f7fcf8;
+
+}
+.header image{
+ 
+  display: block;
+  margin: auto;
+  width: 400rpx;
+  height: 600rpx;
+   margin: 20rpx auto;
+}
+//模板
+.con_a{
+display: flex;
+}
+.con_a .con_left{
+display: flex;
+}
+.con_a .con_right{
+display: flex;
+flex: 2
+}
+.text_15pt{
+  font-size: 15pt;
+  color: #47715d;
+}

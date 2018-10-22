@@ -1,0 +1,17 @@
+.box_item{
+  margin: 10rpx 1%;
+  display: flex;
+  align-items: center;
+  height: 200rpx;
+  width: 98%;
+ text-align: center;
+ border: 1rpx solid #333740;
+}
+.box_item text{
+margin-left: 50rpx;
+height:40rpx;
+font-size: 40rpx;
+color:green;
+font-weight:bold;
+
+}

@@ -1,0 +1,11 @@
+<view class="item">
+  <view class="header hedaer_mic">
+    <image src="./../../../imagess/article_img.png" mode="scaleToFill" />
+    <text>信儿工作室</text>
+  </view>
+  <view class="content" >
+    <text class="text_head">{{datal.article_name}}</text>
+    <text class="text_cont"> &nbsp;&nbsp;{{datal.article_content}}</text>
+      <text class="text_end">{{datal.article_date}}</text>
+  </view>
+</view>

@@ -1,0 +1,14 @@
+<view class="con" a:for="{{datal}}"  a:for-index = "idx"
+data-index="{{idx}}" onTap="tapCon">
+<view url="./details/details" class="item">
+  <view class="header hedaer_mic">
+    <image src="./../../imagess/article_img.png" mode="scaleToFill" />
+    <text>{{item.article_date}}</text>
+  </view>
+  <view class="content">
+    <text class="text_head">{{item.article_name}}</text>
+    <text class="text_cont">{{item.article_content}}</text>
+    <text class="text_end">>>查看详情</text>
+  </view>
+</view>
+</view>

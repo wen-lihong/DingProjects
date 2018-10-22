@@ -1,0 +1,64 @@
+<!-- sousuo -->
+<view class="sousuo">
+  <view class="sousuo_box">
+    <view class="search">
+      <view class="search_he">
+        <view class="mbyxfont mbyx-sousuo df_centerv"></view>
+        <input class="search_inpur" placeholder="搜索最新动态" auto-focus focus="ture" value="{{searchValue}}" bindinput="searchValueInput" />
+      </view>
+      <view class="search_btn">搜索</view>
+    </view>
+  </view>
+</view>
+<!-- 轮播 -->
+<view class="lunbo">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}">
+    <block a:for="{{imgData}}">
+      <swiper-item>
+        <image src="{{item}}" mode="scaleToFill" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<!-- 开发案例..... -->
+<view class="content">
+  <navigator url="./devcase/devcase" class="content_item">
+    <image src="./../../imagess/demo-logo.png" mode="scaleToFill" />
+    <text class="txet_f">开发案例</text>
+  </navigator>
+  <navigator url="./wxsale/wxsale" class="content_item">
+    <image src="./../../imagess/Marketing.png" mode="scaleToFill" />
+    <text class="txet_f">微信营销</text>
+  </navigator>
+  <navigator url="./xinerkeji/xinerkeji" class="content_item">
+    <image src="./../../imagess/science.png" mode="scaleToFill" />
+    <text class="txet_f">信儿科技</text>
+  </navigator>
+  <navigator url="./cooperation/cooperation" class="content_item">
+    <image src="./../../imagess/cooperation.png" mode="scaleToFill" />
+    <text class="txet_f">加盟合作</text>
+  </navigator>
+  <navigator url="./hository/hository" class="content_item">
+    <image src="./../../imagess/History.png" mode="scaleToFill" />
+    <text class="txet_f">发展历史</text>
+  </navigator>
+  <navigator url="./hope/hope" class="content_item">
+    <image src="./../../imagess/recruit.png" mode="scaleToFill" />
+    <text class="txet_f">招兵买马</text>
+  </navigator>
+</view>
+<!-- 头条资讯 -->
+<view class="information">
+  <view class="header">
+    <image src="./../../imagess/news-list.png" mode="scaleToFill" />
+    <text class="txet_f">头条资讯</text>
+  </view>
+  <view class="info_con" a:for="{{datal}}"  a:for-index="idx"
+  data-index="{{idx}}" onTap="tapCon">
+    <view class="info_item">
+      <text class="textm">{{item.article_name}}</text>
+      <text class="textn">{{item.article_date}}</text>
+    </view>
+   
+  </view>
+</view>

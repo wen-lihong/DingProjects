@@ -1,0 +1,11 @@
+<view class="box">
+  <navigator url="./butiful/butiful" class="box_item">
+    <view class="box_left">
+      <image src="./../../../imagess/news-list.png" mode="scaleToFill" />
+    </view>
+    <view class="box_right">
+      <text>美丽热购物网</text>
+      <text>汽车行业</text>
+    </view>
+  </navigator>
+</view>

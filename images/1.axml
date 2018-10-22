@@ -1,0 +1,952 @@
+<!--productDetails.wxml-->
+<view class="container" bindtap="hideMenuC">
+  <view class="product-head">
+    <image src="{{post_Data.brandPath}}" class="{{post_Data.hasSpecialStyle==true?'WH750':'product-banner'}}"></image>
+    <!-- <view class="nav"><image src="" class="nav-img"></image></view><view class="nav" id="nav-buylist"><image src="" class="nav-img"></image></view> -->
+  </view>
+  <view class="product-body-wrap">
+    <view class="product-body-wrap-head">
+      <text class="product-body-wrap-head-title">{{post_Data.caseName}}模板</text>
+      <view class="product-body-wrap-head-number">￥        
+        <text class="number">{{post_Data.thisModulePrice}}</text>
+      </view>
+      <view class="share">
+        <image src="/images/icon/ICONS2.png" class="share-immg"></image>
+        <text class="share-txt">分享</text>
+      </view>
+      <button class="share-btn" open-type="share">分享</button>
+    </view>
+    <view class="isDiscount" wx:if="{{post_Data.hasFavourable}}" catchtap="goCoupon">
+      <text class="discount-txt">此商品参与优惠活动</text>
+      <text class="discount-txt2">查看活动详情</text>
+      <image src="/images/icon/arr-r.png" class="discount-img"></image>
+      <image src="/images/icon/ICONS.png" class="fixedicon"></image>
+    </view>
+    <view class="package" id="package">
+      <text class="gray">套餐</text>
+      <text class="package-txt">买模板、模板+制作+申请、维护</text>
+    </view>
+    <view class="package">
+      <text class="gray">运费</text>
+      <text class="package-txt stock">包邮</text>
+    </view>
+  </view>
+  <view class="service-nav" wx:if="{{isShow2}}">
+    <view class="shop-service">
+      <image src="/images/icon/ICONS3.png" class="shop-service-img"></image>
+      <text class="mini-btn">客服</text>
+    </view>
+    <view class="shop-service shop" catchtap='goShop'>
+      <image src="/images/icon/ICONS4.png" class="shop-service-img"></image>
+      <text class="mini-btn">订单</text>
+    </view>
+    <!--noborder-->
+    <view class="buy">加入对比      
+      <view class="buy-Compare" wx:if="{{isShowCompareMemu}}">
+        <view class="buy-Compare-head"></view>
+        <block wx:for="{{taocanArray}}" wx:for-index="idx" wx:for-item="item">
+          <view class="buy-Compare-item">
+            <view class="buy-Compare-item-txt buy-Compare-item-wrap">{{item.caseName}}</view>
+            <image src="/images/icon/cross.png" class="buy-Compare-item-img" catchtap="delItem" data-id="{{idx}}"></image>
+          </view>
+        </block>
+        <view class="buy-Compare-foot" catchtap="goComparePg">对比          
+          <image src="/images/icon/arrow.png" class="buy-compare-arr"></image>
+        </view>
+      </view>
+    </view>
+    <view class="buy bug-quick" catchtap="bugGogo">立即购买</view>
+    <button class="service" open-type="contact">联系客服</button>
+  </view>
+  <view class="gogoBuy" catchtap="gogoBuy">d</view>
+  <view class="judge">
+    <view class="judge-head" catchtap="goComment">
+      <text class="baby">宝贝评价</text>
+      <text class="judge-txt">(5)</text>
+    </view>
+    <!-- <view class="judge-detail"><view class="judge-detail-item">有图(0)</view><view class="judge-detail-item">好评(0)</view><view class="judge-detail-item">中评(0)</view><view class="judge-detail-item">差评(0)</view></view> -->
+  </view>
+  <view class="product-detail-title" wx:if="{{post_Data.productPara.space}}">
+    <text class="product-title-counts">产品参数</text>
+    <view class="product-detail-title-small">{{post_Data.productPara.space}}</view>
+    <view class="product-detail-title-small">{{post_Data.productPara.member}}</view>
+    <view class="product-detail-title-small">{{post_Data.productPara.train}}</view>
+    <view class="product-detail-title-small">{{post_Data.productPara.service}}</view>
+  </view>
+  <!-- <view class="year-pay"><text class="judge-txt">{{post_Data.thisModulePrice}}/年</text></view> -->
+  <!-- <view class="compare"><view class="compare-top commitRow"><view class="compare-top-l "><text>版本信息</text></view><view class="compare-top-r "><text>高级版</text></view></view><view class="thin commitRow"><view class="w1">服务类型</view><view class="w2">服务内容</view><view class="w3">{{post_Data.thisModulePrice}}/年</view></view><view class=" thin2 commitRow"><view class="w1 thin2">品牌展示</view><view class="pinpai2 w2 thin2"><view class="boder-b ">去除官方标识</view><view class="boder-t">自定义域名</view></view><view class="pinpai3 w3 thin2"><view class="boder-b "><image wx:if="{{post_Data.VerMessage.delLogo}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view><view class="boder-t">{{post_Data.VerMessage.selfDomain}}</view></view></view><view class=" thin2 commitRow"><view class="w1 thin2">小程序保障</view><view class="pinpai2 w2 thin2"><view class="boder-b ">数据空间</view><view class="boder-t">CDN加速</view></view><view class="pinpai3 w3 thin2"><view class="boder-t g2" style="border-top:0;">{{post_Data.productPara.space}}</view><view class="boder-b  g2-img"><image wx:if="{{post_Data.VerMessage.cDN}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view></view></view><view class="thin commitRow"><view class="w1">小程序模版个数</view><view class="w2">小程序模版个数</view><view class="w3">{{post_Data.VerMessage.appCount}}</view></view><view class="thin commitRow"><view class="w1">小程序自打包</view><view class="w2">自打包次数</view><view class="w3">{{post_Data.VerMessage.selfPackCount}}</view></view><view class=" thin2 commitRow thin3"><view class="w1 thin2 thin3">数据统计分析</view><view class="pinpai2 w2 thin2 thin3"><view class="boder-b ">数据总揽</view><view class="boder-t boder-t1">访客分析</view><view class="boder-b border-b2">传播数据</view><view class="boder-t boder-t1">应用数据与对象管理</view><view class="boder-t">公众号管理</view></view><view class="pinpai3 w3 thin2 thin3 "><view class="boder-b  g2-img"><image wx:if="{{post_Data.VerMessage.dataScreen}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view><view class="boder-b  g2-img"><image wx:if="{{post_Data.VerMessage.visitorAnalysis}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view><view class="boder-b  g2-img"><image wx:if="{{post_Data.VerMessage.dataSpread}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view><view class="boder-b  g2-img"><image wx:if="{{post_Data.VerMessage.applicationData}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view><view class="boder-b  g2-img"><image wx:if="{{post_Data.VerMessage.thePublic}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view></view></view><view class=" thin2 commitRow thin3 thin6"><view class="w1 thin2 thin3 thin6">功能服务</view><view class="pinpai2 w2 thin2 thin3 thin6"><view class="boder-b ">基础组件</view><view class="boder-t boder-t1">子帐号管理</view><view class="boder-b border-b2">社区系统</view><view class="boder-t boder-t1">城市定位</view><view class="boder-t boder-t1">悬浮框</view><view class="boder-t">CDN加速</view></view><view class="pinpai3 w3 thin2 thin3 thin6 "><view class="boder-b  g2-img thin9"><image wx:if="{{post_Data.VerMessage.component}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view><view class="boder-b  g2-img"><image wx:if="{{post_Data.VerMessage.childAccount}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view><view class="boder-b  g2-img"><image wx:if="{{post_Data.VerMessage.community}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view><view class="boder-b  g2-img"><image wx:if="{{post_Data.VerMessage.cityposition}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view><view class="boder-b  g2-img"><image wx:if="{{post_Data.VerMessage.suspension}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view><view class="boder-b  g2-img thin10"><image wx:if="{{post_Data.VerMessage.cDN2}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view></view></view><view class=" thin2 commitRow thin3"><view class="w1 thin2 thin3">总部小程序支持</view><view class="pinpai2 w2 thin2 thin3"><view class="boder-b ">程序一对一咨询</view><view class="boder-t boder-t1">帐号申请</view><view class="boder-b border-b2">制作支持</view><view class="boder-t boder-t1">打包支持</view><view class="boder-t">提交审核</view></view><view class="pinpai3 w3 thin2 thin3 "><view class="boder-b  g2-img"><image wx:if="{{post_Data.VerMessage.oneOne}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view><view class="boder-b  g2-img"><image wx:if="{{post_Data.VerMessage.accountRequest}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view><view class="boder-b  g2-img"><image wx:if="{{post_Data.VerMessage.MakeSupor}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view><view class="boder-b  g2-img"><image wx:if="{{post_Data.VerMessage.packSupor}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view><view class="boder-b  g2-img"><image wx:if="{{post_Data.VerMessage.submit}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view></view></view><view class=" thin2 commitRow thin3 thin4"><view class="w1 thin2 thin3 thin4">客户服务</view><view class="pinpai2 w2 thin2 thin3 thin4"><view class="boder-b ">基础模版</view><view class="boder-t boder-t1">认证设计师模版</view><view class="boder-b border-b2">官方设计师模版</view></view><view class="pinpai3 w3 thin2 thin3 thin4 "><view class="boder-b  g2-img"><image wx:if="{{post_Data.VerMessage.PrimaryModule}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view><view class="boder-b  g2-img">
+          {{post_Data.VerMessage.identification}}
+        </view><view class="boder-b  g2-img">
+          {{post_Data.VerMessage.official}}
+        </view></view></view><view class=" thin2 commitRow thin3 thin4"><view class="w1 thin2 thin3 thin4">模版支持</view><view class="pinpai2 w2 thin2 thin3 thin4"><view class="boder-b ">基础客服服务</view><view class="boder-t boder-t1">专属客服服务</view><view class="boder-b border-b2">专属技术服务</view></view><view class="pinpai3 w3 thin2 thin3 thin4 "><view class="boder-b  g2-img"><image wx:if="{{post_Data.VerMessage.primaryService}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view><view class="boder-b  g2-img"><image wx:if="{{post_Data.VerMessage.selfService}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view><view class="boder-b  g2-img"><image wx:if="{{post_Data.VerMessage.selfSkill}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view></view></view><view class=" thin2 commitRow thin3 thin7"><view class="w1 thin2 thin3 thin7">培训</view><view class="pinpai2 w2 thin2 thin3 thin7"><view class="boder-b ">年会沙龙</view><view class="boder-t boder-t1">基础课程</view><view class="boder-b border-b2">高级课程</view><view class="boder-t boder-t1" style="border-bottom:0;">线上直播</view></view><view class="pinpai3 w3 thin2 thin3 thin7 "><view class="boder-b  g2-img thin9"><image wx:if="{{post_Data.VerMessage.shalong}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view><view class="boder-b  g2-img"><image wx:if="{{post_Data.VerMessage.primaryClass}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view><view class="boder-b  g2-img"><image wx:if="{{post_Data.VerMessage.LVClass}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view><view class="boder-b  g2-img thin10"><image wx:if="{{post_Data.VerMessage.Live}}" class="pinpai-img" src="/images/icon/hook.png"></image><image wx:else class="pinpai-img" src="/images/icon/tine.png"></image></view></view></view></view> -->
+  <view class="compare-table" wx:if="{{post_Data.hasVerMessage}}">
+    <view class="table-title">
+      <view class="title-l center-flex">小程序套餐详情</view>
+      <view class="title-r center-flex">{{post_Data.caseName}}</view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">服务内容</view>
+      <view class="table-item-c center-flex">{{post_Data.thisModulePrice}}￥</view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex rela">
+        <view class='abso-kexuan' style='height: 78px;'>
+          <text>需求引导</text>
+        </view>
+      </view>
+      <view class="table-item-b center-flex">推荐案例数</view>
+      <view class="table-item-c center-flex">{{post_Data.VerMessage.appCount}}</view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">页面深度</view>
+      <view class="table-item-c center-flex">{{post_Data.VerMessage.pageCount}}</view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex rela">
+        <view class='abso-kexuan' style='height: 478px;'>
+          <text>功能模块</text>
+        </view>
+      </view>
+      <view class="table-item-b center-flex">基础组件</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.BasedComponent}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">头条资讯</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.headlineInformation}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">行业案例</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.Case}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">个人中心</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.center}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">电商系统</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.Ecommerce}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">社区系统</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.communitySys}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">营销工具</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.MarketingTool}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">子帐号管理</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.SubAccountManagement}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">城市定位</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.CityPostion}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">悬浮框</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.SuspensionBox}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">多商家</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.someSellers}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">到店指引</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.ToGuide}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex rela">
+        <view class='abso-kexuan' style='height: 78px;'>
+          <text>云服务保障</text>
+        </view>
+      </view>
+      <view class="table-item-b center-flex">数据空间</view>
+      <view class="table-item-c center-flex">        {{post_Data.VerMessage.dadaBase}}      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">CDN加速</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.CDN}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex rela">
+        <view class='abso-kexuan' style='height: 238px;'>
+          <text>数据统计分析</text>
+        </view>
+      </view>
+      <view class="table-item-b center-flex">用户管理</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.UserManagement}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">数据总览</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.dataOverview}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">访客分析</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.VisitorsAnalysis}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">传播数据</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.TransmissionData}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">应用数据与对象管理</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.DataManagement}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">公众号管理</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.PublicNumberManagement}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex rela">
+        <view class='abso-kexuan' style='height: 198px;'>
+          <text>售后支持</text>
+        </view>
+      </view>
+      <view class="table-item-b center-flex">一对一咨询</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.OneToOne}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">帐号申请</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.AccountApplication}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">提交&审核</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.SubmitAudit}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">免费时效</view>
+      <view class="table-item-c center-flex">        {{post_Data.VerMessage.free}}      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">专属技术服务</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.technicalServices}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex rela">
+        <view class='abso-kexuan' style='height: 158px;'>
+          <text>品牌展示</text>
+        </view>
+      </view>
+      <view class="table-item-b center-flex">去除官方标志</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.RemoveOfficialLogo}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">移动站点</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.mobileSite}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">自定义域名</view>
+      <view class="table-item-c center-flex">
+        <image wx:if="{{post_Data.VerMessage.myDomin}}" class="pinpai-img" src="/images/icon/hook.png"></image>
+        <image wx:else class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+    </view>
+    <view class="table-item">
+      <view class="table-item-a center-flex">服务类型</view>
+      <view class="table-item-b center-flex">定向推广</view>
+      <view class="table-item-c center-flex">        {{post_Data.VerMessage.DirectionalPromotion}}
+      </view>
+    </view>
+  </view>
+  <block wx:for="{{post_Data.bannerImgs}}">
+    <image src="{{item}}" mode="widthFix" class="fill-img"></image>
+  </block>
+  <view class="classname" style="width:240px;height:55px;opacity:0">s</view>
+  <view class="buy-quick-menu" wx:if="{{isShow}}">
+    <view class="buy-bc" style="height:{{height}}px;" catchtap="closeMenu"></view>
+    <view class="buy-banner">
+      <view class="buy-banner-img">
+        <image src="{{post_Data.brandPath}}" class="{{post_Data.hasSpecialStyle==true?'WH282':'buy-banner-img-true'}}"></image>
+      </view>
+      <view class="buy-banner-txt">
+        <text class="product-body-wrap-head-title green">{{post_Data.caseName}}模板</text>
+        <view class="product-body-wrap-head-number">￥          
+          <text class="number">{{post_Data.thisModulePrice}}</text>
+        </view>
+        <text class="count-buy">购买数量：1</text>
+      </view>
+      <image src="/images/icon/x.jpg" class="x" catchtap="closeMenu"></image>
+    </view>
+    <view class="product-detail-title bg">
+      <text class="product-title-counts ">产品参数</text>
+      <view class="product-detail-title-small">{{post_Data.productPara.space}}</view>
+      <view class="product-detail-title-small">{{post_Data.productPara.member}}</view>
+      <view class="product-detail-title-small">{{post_Data.productPara.train}}</view>
+      <view class="product-detail-title-small">{{post_Data.productPara.service}}</view>
+    </view>
+    <view class="confirm" catchtap="confirmPay" data-payCount="{{post_Data.thisModulePrice}}">确定</view>
+  </view>
+  <view class="table" style='display:none;'>
+    <view class="tr bg-w">
+      <view class="th ba bigb">微信小程序模版套餐详情</view>
+      <view class="th ba">展示版</view>
+      <view class="th ba">超惠版</view>
+      <view class="th ba ">初级版</view>
+      <view class="th ba">中级版</view>
+      <view class="th  ba">高级版</view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;">服务类型</view>
+      <view class="td " style="width: 179.782rpx;">服务内容</view>
+      <view class="td ba2 ba12">￥</view>
+      <view class="td ba2 ba12">599￥</view>
+      <view class="td ba2 ba12">1288￥</view>
+      <view class="td ba2 ba12">3988￥</view>
+      <view class="td ba2 ba12">7988￥</view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;position:relative;">
+        <view class="kexuan" style='height:108rpx;'>需求引导</view>
+      </view>
+      <view class="td " style="width: 179.782rpx;">推荐案例个数</view>
+      <view class="td ba2 ba12">1</view>
+      <view class="td ba2 ba12">1</view>
+      <view class="td ba2 ba12">3</view>
+      <view class="td ba2 ba12">5</view>
+      <view class="td ba2 ba12">10</view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;">服务类型</view>
+      <view class="td " style="width: 179.782rpx;">页面类型</view>
+      <view class="td ba2 ba12">单页</view>
+      <view class="td ba2 ba12">两层以内</view>
+      <view class="td ba2 ba12">三层以内</view>
+      <view class="td ba2 ba12">三层以内</view>
+      <view class="td ba2 ba12">不限</view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;position:relative;">
+        <view class="kexuan" style="height:726rpx;">功能模块</view>
+      </view>
+      <view class="td " style="width: 179.782rpx;">基础组件</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;"></view>
+      <view class="td " style="width: 179.782rpx;">头条资讯</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;"></view>
+      <view class="td " style="width: 179.782rpx;">行业案例</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;"></view>
+      <view class="td " style="width: 179.782rpx;">个人中心</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;"></view>
+      <view class="td " style="width: 179.782rpx;">电商系统</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;"></view>
+      <view class="td " style="width: 179.782rpx;">社区系统</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;"></view>
+      <view class="td " style="width: 179.782rpx;">营销工具</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;"></view>
+      <view class="td " style="width: 179.782rpx;">子帐号管理</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;"></view>
+      <view class="td " style="width: 179.782rpx;">城市定位</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;"></view>
+      <view class="td " style="width: 179.782rpx;">悬浮框</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;"></view>
+      <view class="td " style="width: 179.782rpx;">多商家</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;"></view>
+      <view class="td " style="width: 179.782rpx;">到店指引</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;position:relative;">
+        <view class="kexuan" style='height:112rpx;'>云端保障</view>
+      </view>
+      <view class="td " style="width: 179.782rpx;">数据空间</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">80M</view>
+      <view class="td ba2 ba12">500M</view>
+      <view class="td ba2 ba12">2G</view>
+      <view class="td ba2 ba12">无限制</view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;"></view>
+      <view class="td " style="width: 179.782rpx;">CDN加速</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;position:relative;">
+        <view class="kexuan" style='height:330rpx;'>统计分析</view>
+      </view>
+      <view class="td " style="width: 179.782rpx;">用户管理</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;"></view>
+      <view class="td " style="width: 179.782rpx;">数据总览</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;"></view>
+      <view class="td " style="width: 179.782rpx;">访客分析</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;"></view>
+      <view class="td " style="width: 179.782rpx;">传播数据</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;"></view>
+      <view class="td " style="width: 179.782rpx;">应用数据与对象管理</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;"></view>
+      <view class="td " style="width: 179.782rpx;">公众号管理</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;position:relative;">
+        <view class="kexuan" style='height:264rpx;'>售后支持</view>
+      </view>
+      <view class="td " style="width: 179.782rpx;">一对一咨询</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;"></view>
+      <view class="td " style="width: 179.782rpx;">帐号申请</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;"></view>
+      <view class="td " style="width: 179.782rpx;">提交审核</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;"></view>
+      <view class="td " style="width: 179.782rpx;">免费时效</view>
+      <view class="td ba2 ba12">无</view>
+      <view class="td ba2 ba12">无</view>
+      <view class="td ba2 ba12">3个月</view>
+      <view class="td ba2 ba12">6个月</view>
+      <view class="td ba2 ba12">12个月</view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;"></view>
+      <view class="td " style="width: 179.782rpx;">专属技术服务</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;position:relative;">
+        <view class="kexuan" style='height:265rpx;'>品牌展示</view>
+      </view>
+      <view class="td " style="width: 179.782rpx;">去除官方标识</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;"></view>
+      <view class="td " style="width: 179.782rpx;">移动站点</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;"></view>
+      <view class="td " style="width: 179.782rpx;">自定义域名</view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/tine.png"></image>
+      </view>
+      <view class="td ba2 ba12">
+        <image class="pinpai-img" src="/images/icon/hook.png"></image>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td " style="width: 111rpx;">服务类型</view>
+      <view class="td " style="width: 179.782rpx;">定向推广</view>
+      <view class="td ba2 ba12">双向</view>
+      <view class="td ba2 ba12">单向</view>
+      <view class="td ba2 ba12">单向</view>
+      <view class="td ba2 ba12">双向</view>
+      <view class="td ba2 ba12">双向</view>
+    </view>
+  </view>
+  <view style="height:50px;width:750rpx;opacity:0;">ss</view>
+</view>

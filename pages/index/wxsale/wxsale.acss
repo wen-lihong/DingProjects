@@ -1,0 +1,72 @@
+/* 搜索 */
+
+
+/* 头条资讯 */
+.header{
+  padding-left: 1%;
+  height: 80rpx;
+   display: flex;
+  align-items: center; 
+  border-bottom: #c0bf03 2rpx solid;
+}
+.header image{
+  width: 40rpx;
+  height: 40rpx;
+  margin:0 10rpx;
+  
+}
+.header text{
+
+line-height:40rpx;
+font-size: 30rpx;
+color:#333740;
+font-weight:bold;
+margin-top: 10rpx;
+}
+
+
+
+
+.content{
+  display: flex;
+  flex-wrap: wrap;
+  
+
+ 
+  margin-bottom: 40rpx;
+
+
+}
+.text_head{
+
+  width:92%;
+margin:20rpx 0;
+margin-left: 50rpx;
+line-height: 50rpx;
+font-size:35rpx;
+}
+.text_cont{
+  width: 96%;
+  line-height: 40rpx;
+  font-size: 25rpx;
+  color: #333740;
+ margin: auto;
+}
+.text_end{
+  width: 96%;
+  line-height: 100rpx;
+  text-align: right;
+     margin: auto;
+}
+.info_item text{
+
+  width: 20%;
+ overflow: hidden;
+  white-space: nowrap;
+text-overflow: ellipsis;
+height:25rpx;
+font-size: 25rpx;
+}
+
+
+}
