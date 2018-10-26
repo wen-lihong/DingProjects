@@ -3,8 +3,9 @@ require('./config$');
 require('./importScripts$');
 function success() {
 require('../..//app');
-require('../../pages/index/devcase/butiful/butiful');
 require('../../pages/index/index');
+require('../../pages/index/devcase/butiful/butiful');
+require('../../pages/index/devcase/evaluation/evaluation');
 require('../../pages/index/devcase/devcase');
 require('../../pages/index/wxsale/wxsale');
 require('../../pages/index/wxsale/content/content');

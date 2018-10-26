@@ -1,10 +1,11 @@
 {
   "pages": [
-     
+        "pages/index/index",
       "pages/index/devcase/butiful/butiful",
-    "pages/index/index",
+      "pages/index/devcase/evaluation/evaluation",
+  
     "pages/index/devcase/devcase",
- 
+    
 
     "pages/index/wxsale/wxsale",
     "pages/index/wxsale/content/content",
@@ -53,7 +54,7 @@
         "name": "动态"
       },
       {
-        "pagePath": "pages/case/case",
+        "pagePath": "pages/index/devcase/devcase",
         "icon": "./../../imagess/swiper/demo.png",
         "activeIcon": "./../../imagess/swiper/demo-sel.png",
         "name": "案例"

@@ -6,6 +6,9 @@ Page({
     indicatorDots: true,
     autoplay: true,
     interval: 3000,
+    systemInfo:{
+      uid:""
+    },
   imgData :[
      './../../images/t01.jpg',
      './../../images/t02.jpg',
@@ -13,26 +16,126 @@ Page({
   ]
   },
   onLoad(query) {
-    console.log(1111)
+    var that=this
+   //获取头条资讯
     utils.getdongtai((res)=>{
       app.globalData.datal=res.data.data;
-      console.log(res.data.data)
-     
-      this.setData({
+      that.setData({
         datal: app.globalData.datal
       })
     })
-   
-
-    // 页面加载
+    this.getii()
+    this.getSystemInfoPage()
    
   },
+
+  
+  getSystemInfoPage() {
+    var that = this
+    dd.getNetworkType({
+      success: (res) => {
+        that.setData({
+          networkType: res.networkType
+        });
+      }
+    });
+
+
+  },
+
+  getii(){
+    var that=this;
+    //获取AuthCode
+    dd.getAuthCode({
+  
+      success: (res) => {
+      
+        let code = res.authCode
+        utils.ff((res) => {
+      
+          let uid = res.data.info.suid
+          var suid = that.data.systemInfo
+          suid.uid = res.data.info.suid
+          that.setData({
+            systemInfo: suid
+           
+          })
+          this.potsysinfo(uid)
+        }, code)
+       
+      },
+      fail: (err) => {
+        dd.alert({ content: JSON.stringify(err) })
+      }
+    })
+  },
+
+  potsysinfo(uid){
+    //获取用户设备信息
+    dd.getSystemInfo({
+      success: (res) => {
+        
+        this.setData({
+          systemInfo: res
+        })
+        
+        let sysinfo = this.data.systemInfo
+        utils.jj((callback) => {
+         
+        }, sysinfo,uid)
+      }
+    })
+  },
   tapCon(e){
-   console.log(e)
+   
     let index = e.currentTarget.dataset.index;
     dd.navigateTo({
       url:"./../dynamic/details/details?indexm="+index
     })
+  },
+  cancle(){
+    utils.payin((cc)=>{
+    console.log(cc.data)
+      // dd.pay({
+      //   info: cc.data, // 订单信息
+      //   success: res => {
+      //     /*{
+      //         memo: 'xxxx', // 保留参数，一般无内容
+      //         result: 'xxxx', // 本次操作返回的结果数据
+      //         resultStatus: '' // 本次操作的状态返回值，标识本次调用的结果
+      //     }*/
+        
+      //   },
+      //   fail: err => {
+      //     dd.alert({
+      //       content: JSON.stringify(err)
+      //     })
+      //   }
+      // })
+    })
+   
+  
+     
+    // dd.chooseChatForNormalMsg({
+    //   isConfirm: 'true', //是否弹出确认窗口，默认为true
+    //   success: res => {
+    //     // 该cid和服务端开发文档-普通会话消息接口配合使用，而且只能使用一次，之后将失效
+    //     /*{
+    //         cid: 'xxxx',
+    //         title:'xxx'
+    //     }*/
+    //     let cid= res.cid
+    //     console.log(res.title)
+    //     utils.sendMessage((res) => {
+         
+    //     }, cid)
+    //   },
+    //   fail: err => {
+    //     dd.alert({
+    //       content: JSON.stringify(err)
+    //     })
+    //   }
+    // })
   },
   onReady() {
     // 页面加载完成
@@ -63,4 +166,30 @@ Page({
       path: 'pages/index/index',
     };
   },
+
+  formSub(e) {
+    // 通过e.detail.formId可以获取到推送消息的临时授权码code
+    console.log(e.detail.formId)
+    dd.httpRequest({
+      url: 'http://zmail.pub/cner/lh/zhipay/zhi.php?code=' + e.detail.formId,
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      data: {
+      },
+      dataType: 'json',
+      success: function(res) {
+        if (res.data.success) {
+          dd.alert({ content: 'form表单提交处理成功' });
+        } else {
+          dd.alert({
+            title: "form表单提交处理失败",
+            content: JSON.stringify(res)
+          });
+        }
+      },
+      fail: function(res) {
+        dd.alert({ content: 'form表单提交处理' });
+      }
+    });
+  }
 });

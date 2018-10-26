@@ -6,7 +6,7 @@
         <view class="mbyxfont mbyx-sousuo df_centerv"></view>
         <input class="search_inpur" placeholder="搜索最新动态" auto-focus focus="ture" value="{{searchValue}}" bindinput="searchValueInput" />
       </view>
-      <view class="search_btn">搜索</view>
+      <view class="search_btn" onTap="cancle">搜索</view>
     </view>
   </view>
 </view>
@@ -62,3 +62,13 @@
    
   </view>
 </view>
+
+<!-- <form onSubmit="formSub" report-submit="true">
+  <view class="section section_gap">
+    <view class="section__title">表单类型</view>
+    <input name="text" maxlength="10" placeholder="最大输入长度10" />
+  </view>
+  <view class="btn-area">
+    <button formType="submit">推送消息</button>
+  </view>
+</form> -->

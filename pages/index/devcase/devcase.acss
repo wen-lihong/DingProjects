@@ -1,33 +1,44 @@
+.anlie{
+  color: #61ab8a;
+  line-height: 80rpx;
+  width: 100%;
+  font-size: 35rpx;
+  text-align: center;
+   border-bottom:3rpx solid #c3c3c3;
+}
 .box_item{
  
   display: flex;
   align-items: center;
-  height: 200rpx;
+  height:200rpx;
   width: 100%;
- 
- border-bottom: 10rpx solid #ccc;
+ border-bottom: 8rpx solid #c3c3c3;
 }
 .box_item .box_left{
-  margin: 0 20rpx;
+  margin: 0 30rpx;
 } 
 .box_item .box_right{
  display: flex;
 
  flex-direction: column;
  
-justify-content:space-around;
+justify-content:space-between;
  
-  height: 150rpx;
+  height: 130rpx;
   
 } 
 .box_item image{
  width: 200rpx;
- height: 200rpx;
+ height: 130rpx;
 }
 .box_item text{
 
-font-size: 28rpx;
+font-size: 26rpx;
 
 /* font-weight:bold; */
 
+}
+.box_right .clo{
+  color: #3a6551;
+  font-size: 32rpx;
 }

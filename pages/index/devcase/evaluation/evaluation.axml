@@ -1,0 +1,14 @@
+<view class="evaluation">
+  <view class="item">
+    <view class="evaluation_top">
+      <image src="./../../../../imagess/History.png" mode="scaleToFill" />
+      <text>结果根本停不下来</text>
+    </view>
+    <view class="evaluation_middle">
+      <text>几米说: 当你喜欢我的时候，我不喜欢你,当你爱上我的时候，我喜欢上你, 当你离开我的时候，我却爱上你,是你走得太快，还是我跟不上你的脚步, 我们错过了诺亚方舟,错过了泰坦尼克号,错过了一切的惊险与不惊险,我们还要继续错过. 我不了解我的寂寞来自何方，但我真的感到寂寞。你也寂寞，世界上每个人都寂寞，只是大家的寂寞都不同吧。</text>
+    </view>
+    <view class="evaluation_botton">
+      <text>2018.10.23 产品分类：中级小程序套餐</text>
+    </view>
+  </view>
+</view>

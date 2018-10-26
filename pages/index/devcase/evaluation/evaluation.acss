@@ -1,0 +1,12 @@
+.evaluation_top{
+  display: flex;
+  width: 300rpx;
+  height: 50rpx;
+}
+.evaluation_top image{
+width: 50rpx;
+height: 50rpx;
+}
+.evaluation_top text{
+line-height: 50rpx;
+}

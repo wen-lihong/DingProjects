@@ -1,18 +1,32 @@
+
+var casedata = require('./../../../utils/caseData.js');
+
 Page({
 
   data:{
-    indicatorDots: true,
-    autoplay: true,
-    interval: 3000,
-  imgData :[
-     './../../images/t01.jpg',
-     './../../images/t02.jpg',
-    './../../images/t03.jpg'
-  ]
+    caseData:''
+   
   },
   onLoad(query) {
     // 页面加载
-    console.info(`Page onLoad with query: ${JSON.stringify(query)}`);
+   
+    let caseData = casedata.caseDataArray
+    let cased = caseData.slice(6,12)
+   this.setData({
+     caseData: cased
+      
+    })
+    
+    console.log(this.data.caseData)
+
+
+
+  },
+  ddt(e){
+   let id = e.currentTarget.dataset.index
+   dd.navigateTo({
+     url:'./butiful/butiful?index='+id
+   })
   },
   onReady() {
     // 页面加载完成

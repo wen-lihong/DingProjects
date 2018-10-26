@@ -1,15 +1,15 @@
 <view class="header">
-  <image src="http://zmail.pub/software/xcxServer/images/Delicacy3.jpg" mode="scaleToFill" />
+  <image src="{{caseData.brandPath}}" mode="scaleToFill" />
 </view>
 <view class="content">
   <view class="con_a">
     <view class="con_left">
-      <text class="text_15pt">天天洗车模板</text>
+      <text class="text_15pt">{{caseData.caseName}}模板</text>
       <view class="con_price">
-        <text class="text36">￥ 999</text>
+        <text class="text36">￥{{caseData.thisModulePrice}}</text>
       </view>
     </view>
-    <view class="con_right">
+    <view class="con_right" onTap="sharess">
       <image src="./../../../../imagess/icon/ICONS2.png" mode="scaleToFill" />
       <text class="text11">分享</text>
     </view>
@@ -22,7 +22,7 @@
     <text class="text30">运费：</text>
     <text>包邮</text>
   </view>
-  <view class="con_b">
+  <view class="con_b" onTap="evaluation">
     <text class="text30">宝贝评价：</text>
     <text>(5)</text>
   </view>
@@ -31,20 +31,19 @@
       <text class="text30">产品参数：</text>
     </view>
     <view class="con_c">
-      <text>买模板、模板加制作+申请</text>
-      <text>买模板、模板加制作+申请</text>
-      <text>买模板、模板加制作+申请</text>
+      <text>{{caseData.productPara.space}}</text>
+      <text>{{caseData.productPara.member}}</text>
+      <text>{{caseData.productPara.train}}</text>
+       <text>{{caseData.productPara.service}}</text>
     </view>
   </view>
   <view class="jietu">
     <view class="con_b con_n">
       <text class="text30 ">产品截图：</text>
     </view>
-    <view class="con_d">
-      <image src="http://zmail.pub/software/xcxServer/images/KTV2.jpg" mode="scaleToFill" />
-      <image src="http://zmail.pub/software/xcxServer/images/KTV4.jpg" mode="scaleToFill" />
-      <image src="http://zmail.pub/software/xcxServer/images/KTV5.jpg" mode="scaleToFill" />
-      <image src="http://zmail.pub/software/xcxServer/images/KTV3.jpg" mode="scaleToFill" />
+    <view class="con_d" a:for="{{caseData.bannerImgs}}">
+      <image src="{{item}}" mode="scaleToFill" />
+     
     </view>
   </view>
 </view>
@@ -62,7 +61,39 @@
   <view class="sever sever_c">
     <text>加入对比</text>
   </view>
-  <view class="sever sever_d" onTap="payfor">
+  <view class="sever sever_d" onTap="payopen">
     <text>立即购买</text>
+  </view>
+</view>
+
+<!-- 支付 -->
+<view class="pay" a:if="{{buysure}}">
+  <view class="pay_bg"></view>
+  <view class="paydemo">
+      <view class="pay_top">
+      
+        <view class="pay_left">
+          <image src="http://zmail.pub/software/xcxServer/images/Delicacy3.jpg" mode="scaleToFill" />
+        </view>
+        <view class="pay_right">
+          <text class="text_t">天天洗车模板</text>
+          <text class="text36">￥999~9999</text>
+          <text class="text28">购买数量：1</text>
+        </view>
+      </view>
+      <view class="canshu ">
+        <view class="con_b con_n">
+          <text class="text30">产品参数：</text>
+        </view>
+        <view class="con_c">
+          <text>买模板、模板加制作+申请</text>
+          <text>买模板、模板加制作+申请</text>
+          <text>买模板、模板加制作+申请</text>
+        </view>
+      </view>
+      <view class="pay_sure" onTap="payfor">确定</view>
+      <view class="cha" onTap="payclose">
+        <image src="./../../../../imagess/icon/x.jpg" mode="scaleToFill" />
+      </view>
   </view>
 </view>

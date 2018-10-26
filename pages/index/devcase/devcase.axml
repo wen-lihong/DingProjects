@@ -1,11 +1,16 @@
 <view class="box">
-  <navigator url="./butiful/butiful" class="box_item">
+  <view class="anlie">
+    <text>应用案例</text>
+  </view>
+  <view a:for="{{caseData}}" class="box_item" data-index="{{item.postId}}" onTap="ddt" >
+  
     <view class="box_left">
-      <image src="./../../../imagess/news-list.png" mode="scaleToFill" />
+      <image src="{{item.brandPathMain}}" mode="scaleToFill" />
     </view>
     <view class="box_right">
-      <text>美丽热购物网</text>
-      <text>汽车行业</text>
+      <text class="clo">{{item.caseName}}</text>
+      <text>{{item.tradeName}}</text>
     </view>
-  </navigator>
+ 
+ </view>
 </view>
