@@ -1,6 +1,6 @@
 function getdongtai(callback){
   dd.httpRequest({
-    url: 'https://www.zmail.pub/software/xcxServer/cnereate/index.php/WeApi/index_trdnes',
+    url: 'http://zmail.pub/software/xcxServer/cnereate/index.php/WeApi/index_trdnes',
     method: 'POST',
     data: {
       'art_class': '获取所有动态'
@@ -14,7 +14,7 @@ function getdongtai(callback){
 //获取用户信息接口
 function ff(callback, code){
   dd.httpRequest({
-    url: 'https://www.zmail.pub/software/cxwdingtalk/index.php/Api/Login/authlogin',
+    url: 'http://zmail.pub/software/cxwdingtalk/index.php/Api/Login/authlogin',
     method: 'POST',
     data: {
       code: code
@@ -27,7 +27,7 @@ function ff(callback, code){
 //存用户设备接口
 function jj(callback,sysinfo,uid) {
   dd.httpRequest({
-    url: "https://www.zmail.pub/software/cxwdingtalk/index.php/Api/Login/getPhone",
+    url: "http://zmail.pub/software/cxwdingtalk/index.php/Api/Login/getPhone",
     method: 'POST',
     data: {
       uid: uid,
@@ -117,17 +117,29 @@ function payfor (callback){
   });
 }
 
-function payin(callback) {
+function payin(resolve,oder) {
   dd.httpRequest({
-    url: 'https://www.zmail.pub/software/cxwdingtalk/index.php/Api/Payment/payOrder',
+    url: 'http://zmail.pub/software/cxwdingtalk/index.php/Api/Payment/payOrder',
     method: 'POST',
     data: {
-
+     orderid:oder.order_id,
+      ordersn: oder.order_sn,
+    uid:oder.uid
     },
     dataType: 'json',
-    success: callback
-
+    success: resolve
+    
   });
+}
+function paydd(resolve,info) {
+  dd.httpRequest({
+    url: "http://zmail.pub/software/cxwdingtalk/index.php/Api/Payment/confirm",
+    method: 'POST',
+    data: info,
+    dataType: 'json',
+    success: resolve
+
+})
 }
 module.exports = {
   getdongtai,
@@ -135,5 +147,6 @@ module.exports = {
   jj,
   payfor, 
   sendMessage,
-  payin
+  payin, 
+  paydd
 }

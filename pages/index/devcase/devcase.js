@@ -17,7 +17,7 @@ Page({
       
     })
     
-    console.log(this.data.caseData)
+   
 
 
 

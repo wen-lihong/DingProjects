@@ -1,10 +1,11 @@
   var api = require('./../../../../utils/api.js');
-
+var app = getApp();
 var casedata = require('./../../../../utils/caseData.js')
 Page({
 
   data:{
     buysure:false,
+    paying: false
   },
   onLoad(query) {
     let id = query.index;
@@ -12,7 +13,7 @@ Page({
     this.setData({
       caseData: caseData 
     })
-    console.log(this.data.caseData)
+   
   },
 
   payopen(){
@@ -26,9 +27,55 @@ Page({
     })
   },
   payfor() {
-    this.setData({
-      buysure:false
-    })
+  //下单
+   let info={};
+    info.uid = app.globalData.userInfo.uid
+    // info.price = this.data.caseData.thisModulePrice
+    info.price = 0.01
+    info.title = this.data.caseData.caseName
+    api.paydd((call)=>{
+   
+      let oder= call.data.info
+      app.globalData.userInfo.oder=oder;
+      oder.uid = app.globalData.userInfo.uid
+      api.payin((res)=>{
+        this.setData({
+          paying: true
+        })
+       let ink = res.data.info
+        dd.pay({
+          info: ink, // 订单信息
+          success: res => {
+           console.log(res)
+           if(res.result){
+            dd.alert({
+              content: "付款成功"
+            })
+           }
+          else{ dd.alert({
+              content: "付款失败"
+            })
+          }
+          },
+          fail: err => {
+            dd.alert({
+              content: JSON.stringify(ink)
+
+            })
+          }
+          
+        })
+        this.setData({
+          paying:false
+        })
+        this.setData({
+          buysure: false
+        })
+      },oder)
+
+    },info)
+   
+  
   },
   evaluation(){
     dd.navigateTo({

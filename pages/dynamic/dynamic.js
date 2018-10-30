@@ -13,7 +13,7 @@ Page({
   },
   onLoad(query) {
     // 页面加载
-    console.log(app.globalData.datal)
+   
     this.setData({
       datal:  app.globalData.datal
 

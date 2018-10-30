@@ -87,7 +87,9 @@ margin-bottom: 10rpx;
   height: 1335rpx;
   margin-bottom: 50rpx;
 }
-
+.jietu .con3 image{
+   height: 675rpx;
+}
 
 /* 客服 订单 ...... */
 .fixbox{
@@ -126,7 +128,7 @@ border-right:2rpx solid #cbcbcb;
  color:#fafafa;
 }
  .sever_d{
-  width: 34%;
+  width:100%;
   background-color: #ff7000;
 color:#fafafa;
 
@@ -145,13 +147,13 @@ color:#fafafa;
 }
 .pay_bg{
   width: 100%;
-  height:44%;
+  height:35%;
   background-color:rgba(0, 0, 0, 0.2);
 
 }
 .paydemo{
 width: 100%;
-height:56%;
+height:65%;
 background-color:#f7fcf8;
 
 position: relative;

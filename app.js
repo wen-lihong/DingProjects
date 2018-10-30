@@ -17,7 +17,7 @@ App({
   globalData:{
     datal:{},
     systemInfo:{},
-     userInfo: null,
+     userInfo: {},
     buyObj: null,
     imgurl: "http://zmail.pub/software/xcxServer/images",
     serverurl: "https://www.zmail.pub/software/xcxServer/"

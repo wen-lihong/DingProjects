@@ -15,6 +15,7 @@ Page({
     './../../images/t03.jpg'
   ]
   },
+
   onLoad(query) {
     var that=this
    //获取头条资讯
@@ -28,7 +29,6 @@ Page({
     this.getSystemInfoPage()
    
   },
-
   
   getSystemInfoPage() {
     var that = this
@@ -49,17 +49,11 @@ Page({
     dd.getAuthCode({
   
       success: (res) => {
-      
+       
         let code = res.authCode
         utils.ff((res) => {
-      
           let uid = res.data.info.suid
-          var suid = that.data.systemInfo
-          suid.uid = res.data.info.suid
-          that.setData({
-            systemInfo: suid
-           
-          })
+          app.globalData.userInfo.uid=uid
           this.potsysinfo(uid)
         }, code)
        
@@ -94,28 +88,7 @@ Page({
     })
   },
   cancle(){
-    utils.payin((cc)=>{
-    console.log(cc.data)
-      // dd.pay({
-      //   info: cc.data, // 订单信息
-      //   success: res => {
-      //     /*{
-      //         memo: 'xxxx', // 保留参数，一般无内容
-      //         result: 'xxxx', // 本次操作返回的结果数据
-      //         resultStatus: '' // 本次操作的状态返回值，标识本次调用的结果
-      //     }*/
-        
-      //   },
-      //   fail: err => {
-      //     dd.alert({
-      //       content: JSON.stringify(err)
-      //     })
-      //   }
-      // })
-    })
-   
-  
-     
+
     // dd.chooseChatForNormalMsg({
     //   isConfirm: 'true', //是否弹出确认窗口，默认为true
     //   success: res => {
@@ -137,6 +110,7 @@ Page({
     //   }
     // })
   },
+ 
   onReady() {
     // 页面加载完成
   },
